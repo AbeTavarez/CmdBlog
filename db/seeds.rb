@@ -24,9 +24,9 @@ p "#{User.count} user(s) created"
 #Articles
 Article.create!({title: "HackingWithPython", description: "Write scripts in python", topic: "coding", user_id: @user.id, category_id: @hacking.id})
 
-Article.create!({title: "CyberSecurityWithRuby", description: "Write scripts in ruby", topic: "security", user_id: @user.id, category_id: @cybersecurity.id})
+# Article.create!({title: "CyberSecurityWithRuby", description: "Write scripts in ruby", topic: "security", user_id: @user.id, category_id: @cybersecurity.id})
 
-Article.create!({title: "App Dev With Swift", description: "Buil apps in swift", topic: "app dev", user_id: @user0.id, category_id: @programming.id})
+# Article.create!({title: "App Dev With Swift", description: "Buil apps in swift", topic: "app dev", user_id: @user0.id, category_id: @programming.id})
 
 p "#{Category.count} categories created"
 p "#{Article.count} article(s) created"
