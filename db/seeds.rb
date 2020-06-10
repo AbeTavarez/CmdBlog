@@ -12,6 +12,7 @@ Category.destroy_all
 
 #create default user
 @user = User.create!({username: "Abe", email: "abe@gmail.com",password: "123456"})
+@user0 = User.create!({username: "Abraham", email: "abraham@gmail.com",password: "123456"})
 
 p "#{User.count} user(s) created"
 
@@ -20,7 +21,12 @@ p "#{User.count} user(s) created"
 @hacking = Category.create!({name: "Hacking"})
 @cybersecurity = Category.create!({name: "Cybersecurity"})
 
+#Articles
 Article.create!({title: "HackingWithPython", description: "Write scripts in python", topic: "coding", user_id: @user.id, category_id: @hacking.id})
+
+Article.create!({title: "CyberSecurityWithRuby", description: "Write scripts in ruby", topic: "security", user_id: @user.id, category_id: @cybersecurity.id})
+
+Article.create!({title: "App Dev With Swift", description: "Buil apps in swift", topic: "app dev", user_id: @user0.id, category_id: @programming.id})
 
 p "#{Category.count} categories created"
 p "#{Article.count} article(s) created"
