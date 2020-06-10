@@ -5,20 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Category.destroy_all
-Article.destroy_all
 User.destroy_all
+Article.destroy_all
+
+Category.destroy_all
 
 #create default user
-@user = user.create!({username: "Abe", email: "abe@gmail.com",password: "123456"})
+@user = User.create!({username: "Abe", email: "abe@gmail.com",password: "123456"})
 
 p "#{User.count} user(s) created"
 
 #Create some Categories for our category table
-@programming = Category.create!("Programming")
-@hacking = Category.create!("Hacking")
-@cybersecurity = Category.create!("Cybersecurity")
+@programming = Category.create!({name: "Programming"})
+@hacking = Category.create!({name: "Hacking"})
+@cybersecurity = Category.create!({name: "Cybersecurity"})
 
 Article.create!({title: "HackingWithPython", description: "Write scripts in python", topic: "coding", user_id: @user.id, category_id: @hacking.id})
 
+p "#{Category.count} categories created"
 p "#{Article.count} article(s) created"
