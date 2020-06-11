@@ -13,7 +13,7 @@ import {
 
 class App extends Component {
   state = {
-    currentUser: null,
+    currentUser: { username: "Abe" },
   };
 
   componentDidMount() {
