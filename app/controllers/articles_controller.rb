@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :authorize_request, only: [:create, :update, :destroy]
   before_action :set_article, only: [:show, :update, :destroy]
 
   # GET /articles
