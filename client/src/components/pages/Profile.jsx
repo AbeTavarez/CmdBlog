@@ -6,9 +6,22 @@ import {
   createArticle,
   updateArticle,
   deleteArticle,
+  getUserArticles,
 } from "../../services/articles";
 
 export default class Profile extends Component {
+  state = {
+    userArticles: [],
+  };
+
+  componentDidMount() {
+    this.getUserArticles();
+  }
+
+  getUserArticles = async (user_id) => {
+    const userArticles = await getUserArticles(user_id);
+  };
+
   render() {
     const { articles, currentUser, destroyArticle, history } = this.props;
     return (

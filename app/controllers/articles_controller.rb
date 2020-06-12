@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
   def userArticles 
     @user = User.find(params[:user_id])
     @articles = Article.where(user_id: @user.id)
+    render json: @articles
   end
 
   # GET /articles/1

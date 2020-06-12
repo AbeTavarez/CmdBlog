@@ -61,6 +61,7 @@ export default class Main extends Component {
   getUsers = async () => {
     const users = await getAllUsers();
     this.setState({ users });
+    console.log(users);
   };
 
   postUser = async (userData) => {
@@ -147,6 +148,7 @@ export default class Main extends Component {
               {...props}
               articles={this.state.articles}
               currentUser={this.props.currentUser}
+              users={this.state.users}
             />
           )}
         />
