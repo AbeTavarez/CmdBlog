@@ -1,12 +1,20 @@
 class ArticlesController < ApplicationController
-  before_action :authorize_request, only: [:create, :update, :destroy]
+  # before_action :authorize_request, only: [:create, :update, :destroy]
   before_action :set_article, only: [:show, :update, :destroy]
 
   # GET /articles
   def index
+
     @articles = Article.all
 
     render json: @articles, include: {user: {only: [:id, :username]}}
+  end
+
+  #Article by Userid
+  def userArticles 
+    @user = User.find(params[:user_id])
+    @articles = Article.where(user_id: @user.id)
+    render json: @articles
   end
 
   # GET /articles/1
