@@ -13,6 +13,7 @@ import Categories from "./Categories";
 import Login from "./Login";
 import Register from "./Register";
 import Profile from "./pages/Profile";
+import Article from "./Article";
 import "./Main.css";
 export default class Main extends Component {
   state = {
@@ -95,6 +96,21 @@ export default class Main extends Component {
               {...props}
               articles={this.state.articles}
               currentUser={this.props.currentUser}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/articles:id"
+          render={(props) => (
+            <Article
+              {...props}
+              articles={this.state.articles}
+              currentUser={this.state.currentUser}
+              destroyArticle={this.destroyArticle}
+              putArticle={this.putArticle}
+              postArticle={this.postArticle}
             />
           )}
         />

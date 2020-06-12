@@ -10,6 +10,8 @@ export default function Articles({ articles }) {
         <Fragment key={article.id}>
           <Link to={`/articles/${article.id}`}>{article.title}</Link>
           <br />
+          <h5>{article.topic}</h5>
+          <p>{article.description}</p>
         </Fragment>
       ))}
     </>
