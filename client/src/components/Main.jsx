@@ -8,6 +8,8 @@ import {
   updateArticle,
   deleteArticle,
 } from "../services/articles";
+import { getAllUsers, createUser, deleteUser } from "../services/users";
+
 import Articles from "./Articles";
 import Categories from "./Categories";
 import Login from "./Login";
@@ -18,12 +20,14 @@ import "./Main.css";
 export default class Main extends Component {
   state = {
     articles: [],
+    users: [],
   };
 
   componentDidMount() {
     this.getArticles();
+    this.getUsers();
   }
-  //* Get all Articles
+  //* Articles
   getArticles = async () => {
     const articles = await getAllArticles();
     console.log(articles);
@@ -50,6 +54,26 @@ export default class Main extends Component {
     await deleteArticle(id);
     this.setState((prevState) => ({
       articles: prevState.articles.filter((article) => article.id !== id),
+    }));
+  };
+
+  //* Users
+  getUsers = async () => {
+    const users = await getAllUsers();
+    this.setState({ users });
+  };
+
+  postUser = async (userData) => {
+    const newUser = await createUser(userData);
+    this.setState((prevState) => ({
+      users: [...prevState.users, newUser],
+    }));
+  };
+
+  destroyUser = async (id) => {
+    await deleteUser(id);
+    this.setState((prevState) => ({
+      users: prevState.users.filter((user) => user.id !== id),
     }));
   };
 

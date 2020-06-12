@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
-import Footer from "./components/shared/Footer";
 
 import {
   verifyUser,
@@ -22,6 +21,7 @@ class App extends Component {
     this.handleVerify();
   }
 
+  //* AUTH
   handleLoginSubmit = async (loginData) => {
     const currentUser = await loginUser(loginData);
     this.setState({ currentUser });
@@ -60,8 +60,8 @@ class App extends Component {
           handleLogout={this.handleLogout}
         />
         <Main
-          handleRegisterSubmit={this.handleRegisterSubmit}
           currentUser={this.state.currentUser}
+          handleRegisterSubmit={this.handleRegisterSubmit}
           handleLoginSubmit={this.handleLoginSubmit}
         />
       </div>
