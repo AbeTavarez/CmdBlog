@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import "./Register.css";
 export default class Register extends Component {
   state = {
     username: "",
@@ -19,6 +20,7 @@ export default class Register extends Component {
     const { handleRegisterSubmit, history } = this.props;
     return (
       <form
+        className="form-container"
         onSubmit={(e) => {
           e.preventDefault();
           handleRegisterSubmit(this.state);
@@ -64,7 +66,7 @@ export default class Register extends Component {
           />
         </label>
         <br />
-        <button>Submit</button>
+        <button className="submit-btn">Submit</button>
       </form>
     );
   }

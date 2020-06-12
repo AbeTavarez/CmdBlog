@@ -43,7 +43,7 @@ class App extends Component {
   };
 
   renderRedirect = () => {
-    return <Redirect to="/root" />;
+    return <Redirect to="/" />;
   };
 
   handleVerify = async () => {
@@ -64,7 +64,7 @@ class App extends Component {
           currentUser={this.state.currentUser}
           handleLoginSubmit={this.handleLoginSubmit}
         />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }

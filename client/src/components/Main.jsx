@@ -6,7 +6,7 @@ import Login from "./Login";
 import Register from "./Register";
 import { getAllArticles } from "../services/articles";
 import Profile from "./pages/Profile";
-
+import "./Main.css";
 export default class Main extends Component {
   state = {
     articles: [],
@@ -24,9 +24,7 @@ export default class Main extends Component {
 
   render() {
     return (
-      <div>
-        <h1>MAIN Component</h1>
-
+      <div className="container">
         <Route
           path="/user/login"
           render={(props) => (

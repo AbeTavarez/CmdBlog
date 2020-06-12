@@ -5,7 +5,7 @@ export default function Articles({ articles }) {
   return (
     <>
       <hr />
-      <h3>All Users Articles Component</h3>
+      <h2>Popular Articles</h2>
       {articles.map((article) => (
         <Fragment key={article.id}>
           <Link to={`/articles/${article.id}`}>{article.title}</Link>
