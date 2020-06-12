@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
+import Footer from "./components/shared/Footer";
 
 import {
   verifyUser,
@@ -13,7 +14,7 @@ import {
 
 class App extends Component {
   state = {
-    currentUser: { username: "Abe" },
+    currentUser: null,
   };
 
   componentDidMount() {
@@ -45,6 +46,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state.currentUser);
     return (
       <div className="App">
         <Header currentUser={this.state.currentUser} />
@@ -53,6 +55,7 @@ class App extends Component {
           currentUser={this.state.currentUser}
           handleLoginSubmit={this.handleLoginSubmit}
         />
+        <Footer />
       </div>
     );
   }
