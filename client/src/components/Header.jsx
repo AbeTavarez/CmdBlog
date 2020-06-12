@@ -4,12 +4,15 @@ import { Link, NavLink } from "react-router-dom";
 
 export default function Header(props) {
   return (
-    <div>
-      <h1>CommandBlog</h1>
-      <nav>
-        <NavLink to="/articles">Articles</NavLink>
-        <NavLink to="/categories">Categories</NavLink>
-      </nav>
+    <div className="header-container">
+      <div className="header-top">
+        <h1>CommandBlog</h1>
+        <nav>
+          <NavLink to="/articles">Articles</NavLink>
+
+          <NavLink to="/categories">Categories</NavLink>
+        </nav>
+      </div>
 
       {props.currentUser ? (
         <>
