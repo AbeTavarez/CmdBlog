@@ -5,6 +5,7 @@ import Articles from "./Articles";
 import Login from "./Login";
 import Register from "./Register";
 import { getAllArticles } from "../services/articles";
+import Profile from "./pages/Profile";
 
 export default class Main extends Component {
   state = {
@@ -37,6 +38,16 @@ export default class Main extends Component {
         />
 
         <Route
+          path="/user/register"
+          render={(props) => (
+            <Register
+              {...props}
+              handleRegisterSubmit={this.props.handleRegisterSubmit}
+            />
+          )}
+        />
+
+        <Route
           exact
           path="/"
           render={(props) => (
@@ -44,6 +55,30 @@ export default class Main extends Component {
               {...props}
               articles={this.state.articles}
               currentUser={this.props.currentUser}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/articles"
+          render={(props) => (
+            <Articles
+              {...props}
+              articles={this.state.articles}
+              currentUser={this.props.currentUser}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/profile"
+          render={(props) => (
+            <Profile
+              {...props}
+              articles={this.state.articles}
+              currentUser={(this, this.state.currentUser)}
             />
           )}
         />

@@ -52,10 +52,11 @@ export default class Login extends Component {
           />
         </label>
         <br />
-
         <button>Submit</button>
         <hr />
+        <h3>Create a new account</h3>
         <Link to="/user/register">Register</Link>
+        <hr />
       </form>
     );
   }

@@ -11,6 +11,7 @@ import {
   registerUser,
   removeToken,
 } from "./services/auth";
+import { Redirect } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -38,6 +39,11 @@ class App extends Component {
 
     localStorage.clear();
     removeToken();
+    this.renderRedirect();
+  };
+
+  renderRedirect = () => {
+    return <Redirect to="/root" />;
   };
 
   handleVerify = async () => {
@@ -49,7 +55,10 @@ class App extends Component {
     console.log(this.state.currentUser);
     return (
       <div className="App">
-        <Header currentUser={this.state.currentUser} />
+        <Header
+          currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+        />
         <Main
           handleRegisterSubmit={this.handleRegisterSubmit}
           currentUser={this.state.currentUser}
