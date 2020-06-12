@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   #:::::Authentication routes:::::::
   post '/auth/login', to: 'authentication#login'
   get '/auth/verify', to: 'authentication#verify'
+  get '/userArticles/:user_id', to: 'articles#userArticles'
+  # root 'pages#home'
+  get 'about', to: 'pages#about'
   #resources:::::::::::::::::::::
   resources :categories
   resources :articles

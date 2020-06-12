@@ -31,3 +31,9 @@ export const deleteArticle = async (id) => {
   const res = await api.delete(`/articles/${id}`);
   return res;
 };
+
+//::::::::::::DELETE::::::::::::::::::::::::
+export const getUserArticles = async (user_id) => {
+  const res = await api.get(`/userArticles/:${user_id}`);
+  return res.data;
+};

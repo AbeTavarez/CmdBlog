@@ -1,17 +1,17 @@
 class UsersController < ApplicationController
-  before_action :authorize_request, except: [:create, :show, :index ]
+  # before_action :authorize_request, except: [:create, :show, :index ]
   before_action :set_user, only: [:show, :update, :destroy]
  
   # GET /users
   def index
     @users = User.all
 
-    render json: @users
+    render json: @users, include: :articles, status: :ok
   end
 
   # GET /users/1
   def show
-    render json: @user
+    render json: @user.to_json(include: { articles: { include: :comments } })
   end
 
   # POST /users

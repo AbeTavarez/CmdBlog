@@ -1,26 +1,72 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./App.css";
+import Header from "./components/Header";
+import Main from "./components/Main";
+
+import {
+  verifyUser,
+  loginUser,
+  registerUser,
+  removeToken,
+} from "./services/auth";
+import { Redirect } from "react-router-dom";
+
+class App extends Component {
+  state = {
+    currentUser: null,
+  };
+
+  componentDidMount() {
+    this.handleVerify();
+  }
+
+  //* AUTH
+  handleLoginSubmit = async (loginData) => {
+    const currentUser = await loginUser(loginData);
+    this.setState({ currentUser });
+  };
+
+  handleRegisterSubmit = async (registerData) => {
+    const currentUser = await registerUser(registerData);
+    this.setState({ currentUser });
+  };
+
+  handleLogout = () => {
+    this.setState({
+      currentUser: null,
+    });
+
+    localStorage.clear();
+    removeToken();
+    this.renderRedirect();
+  };
+
+  renderRedirect = () => {
+    return <Redirect to="/" />;
+  };
+
+  handleVerify = async () => {
+    const currentUser = await verifyUser();
+    this.setState({ currentUser });
+  };
+
+  render() {
+    console.log(this.state.currentUser);
+    return (
+      <div className="App">
+        <Header
+          currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+        />
+        <Main
+          currentUser={this.state.currentUser}
+          handleRegisterSubmit={this.handleRegisterSubmit}
+          handleLoginSubmit={this.handleLoginSubmit}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
