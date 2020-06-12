@@ -102,7 +102,7 @@ export default class Main extends Component {
 
         <Route
           exact
-          path="/articles:id"
+          path="/articles/:id"
           render={(props) => (
             <Article
               {...props}
