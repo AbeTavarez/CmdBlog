@@ -64,7 +64,6 @@ class App extends Component {
           currentUser={this.state.currentUser}
           handleLoginSubmit={this.handleLoginSubmit}
         />
-        {/* <Footer /> */}
       </div>
     );
   }

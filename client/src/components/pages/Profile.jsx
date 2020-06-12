@@ -9,29 +9,6 @@ import {
 } from "../../services/articles";
 
 export default class Profile extends Component {
-  postArticle = async (articleData) => {
-    const newArticle = await createArticle(articleData);
-    this.setState((prevState) => ({
-      articles: [...prevState.articles, newArticle],
-    }));
-  };
-
-  putArticle = async (id, articleData) => {
-    const updatedArticle = await updateArticle(id, articleData);
-    this.setState((prevState) => ({
-      articles: prevState.articles.map((article) =>
-        article.id === id ? updatedArticle : article
-      ),
-    }));
-  };
-
-  destroyArticle = async (id) => {
-    await deleteArticle(id);
-    this.setState((prevState) => ({
-      articles: prevState.articles.filter((article) => article.id !== id),
-    }));
-  };
-
   render() {
     const { articles, currentUser, destroyArticle, history } = this.props;
     return (
