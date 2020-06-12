@@ -160,7 +160,7 @@ export default class Main extends Component {
             <Profile
               {...props}
               articles={this.state.articles}
-              currentUser={this.state.currentUser}
+              currentUser={this.props.currentUser}
               destroyArticle={this.destroyArticle}
               putArticle={this.putArticle}
               postArticle={this.postArticle}

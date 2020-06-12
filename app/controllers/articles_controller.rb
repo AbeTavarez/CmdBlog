@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  # before_action :authorize_request, only: [:create, :update, :destroy]
+  before_action :authorize_request, only: [:userArticles,:create, :update, :destroy]
   before_action :set_article, only: [:show, :update, :destroy]
 
   # GET /articles
@@ -12,9 +12,12 @@ class ArticlesController < ApplicationController
 
   #Article by Userid
   def userArticles 
-    @user = User.find(params[:user_id])
-    @articles = Article.where(user_id: @user.id)
-    render json: @articles
+
+    render json: @current_user.articles
+
+    # @user = User.find(params[:user_id])
+    # @articles = Article.where(user_id: @user.id)
+    # render json: @articles
   end
 
   # GET /articles/1

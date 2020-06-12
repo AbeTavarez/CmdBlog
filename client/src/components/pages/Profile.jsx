@@ -15,20 +15,30 @@ export default class Profile extends Component {
   };
 
   componentDidMount() {
-    this.getUserArticles();
+    if (this.props.currentUser) {
+      this.getUserArticles();
+    }
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentUser !== this.props.currentUser) {
+      this.getUserArticles();
+    }
   }
 
-  getUserArticles = async (user_id) => {
-    const userArticles = await getUserArticles(user_id);
+  getUserArticles = async () => {
+    const userArticles = await getUserArticles();
+    this.setState({ userArticles });
   };
 
   render() {
+    console.log("User", this.props.currentUser);
+    console.log(this.state.userArticles);
     const { articles, currentUser, destroyArticle, history } = this.props;
     return (
       <>
         <hr />
         <h2>My Articles Component</h2>
-        {articles.map((article) => (
+        {this.state.userArticles.map((article) => (
           <Fragment key={article.id}>
             {/* small change:  we made the p tags into links to the article item route */}
             <Link to={`/articles/${article.id}`}>{article.title}</Link>
