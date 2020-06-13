@@ -7,10 +7,10 @@ export default function Header(props) {
   return (
     <div className="header-container">
       <div className="left-side">
-        <h2 to="/" className="">
-          CommandBlog
-        </h2>
-        <br />
+        <NavLink to="/" className="header-logo">
+          <h2 className="">CommandBlog</h2>
+        </NavLink>
+
         <nav className="navbar-link">
           <NavLink className="s-link" to="/articles">
             Articles
@@ -21,24 +21,26 @@ export default function Header(props) {
         </nav>
       </div>
 
-      {props.currentUser ? (
-        <>
-          {props.currentUser.username}
-          <button onClick={props.handleLogout}>Logout</button>
-        </>
-      ) : (
-        <div className="right-side">
-          <Link to="/user/login">Login::Register</Link>
+      <div className="right-side">
+        {props.currentUser ? (
+          <div className="user-username">
+            {props.currentUser.username}
+            <button onClick={props.handleLogout}>Logout</button>
+          </div>
+        ) : (
+          <div>
+            <Link to="/user/login">Login::Register</Link>
+          </div>
+        )}
+
+        <div>
+          {props.currentUser && (
+            <nav>
+              <NavLink to="/profile">Profile</NavLink>
+            </nav>
+          )}
         </div>
-      )}
-
-      {props.currentUser && (
-        <nav>
-          <NavLink to="/profile">Profile</NavLink>
-        </nav>
-      )}
-
-      <hr />
+      </div>
     </div>
   );
 }

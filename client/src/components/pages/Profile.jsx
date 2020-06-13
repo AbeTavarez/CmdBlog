@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   getAllArticles,
   getSingleArticle,
@@ -36,11 +36,13 @@ export default class Profile extends Component {
     const { articles, currentUser, destroyArticle, history } = this.props;
     return (
       <>
-        <hr />
-        <h2>My Articles Component</h2>
+        <div>
+          <h2>My Articles Component</h2>
+          <button>Create New Article</button>
+        </div>
+
         {this.state.userArticles.map((article) => (
           <Fragment key={article.id}>
-            {/* small change:  we made the p tags into links to the article item route */}
             <Link to={`/articles/${article.id}`}>{article.title}</Link>
             {currentUser && currentUser.id === article.user_id && (
               <>

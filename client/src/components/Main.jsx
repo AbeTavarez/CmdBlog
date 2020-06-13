@@ -16,7 +16,9 @@ import Login from "./Login";
 import Register from "./Register";
 import Profile from "./pages/Profile";
 import Article from "./Article";
+import CreateArticle from "./CreateArticle";
 import "./Main.css";
+import EditArticle from "./pages/Edit";
 export default class Main extends Component {
   state = {
     articles: [],
@@ -27,6 +29,28 @@ export default class Main extends Component {
     this.getArticles();
     this.getUsers();
   }
+
+  //* Users
+  getUsers = async () => {
+    const users = await getAllUsers();
+    this.setState({ users });
+    console.log(users);
+  };
+
+  postUser = async (userData) => {
+    const newUser = await createUser(userData);
+    this.setState((prevState) => ({
+      users: [...prevState.users, newUser],
+    }));
+  };
+
+  destroyUser = async (id) => {
+    await deleteUser(id);
+    this.setState((prevState) => ({
+      users: prevState.users.filter((user) => user.id !== id),
+    }));
+  };
+
   //* Articles
   getArticles = async () => {
     const articles = await getAllArticles();
@@ -54,27 +78,6 @@ export default class Main extends Component {
     await deleteArticle(id);
     this.setState((prevState) => ({
       articles: prevState.articles.filter((article) => article.id !== id),
-    }));
-  };
-
-  //* Users
-  getUsers = async () => {
-    const users = await getAllUsers();
-    this.setState({ users });
-    console.log(users);
-  };
-
-  postUser = async (userData) => {
-    const newUser = await createUser(userData);
-    this.setState((prevState) => ({
-      users: [...prevState.users, newUser],
-    }));
-  };
-
-  destroyUser = async (id) => {
-    await deleteUser(id);
-    this.setState((prevState) => ({
-      users: prevState.users.filter((user) => user.id !== id),
     }));
   };
 
@@ -166,6 +169,43 @@ export default class Main extends Component {
               postArticle={this.postArticle}
             />
           )}
+        />
+        <Route
+          exact
+          path="/articles/create"
+          render={(props) => (
+            <CreateArticle {...props} postArticle={this.postArticle} />
+          )}
+        />
+        <Route
+          exact
+          path="/articles/:id/edit"
+          render={(props) => {
+            const articleId = props.match.params.id;
+            const article = this.state.articles.find(
+              (article) => article.id === parseInt(articleId)
+            );
+            return (
+              <EditArticle
+                {...props}
+                article={article}
+                putArticle={this.putArticle}
+              />
+            );
+          }}
+        />
+        <Route
+          exact
+          path="/articles/:id"
+          render={(props) => {
+            const articleId = props.match.params.id;
+            return (
+              <Article
+                articleId={articleId}
+                currentUser={this.props.currentUser}
+              />
+            );
+          }}
         />
       </div>
     );

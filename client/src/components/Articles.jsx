@@ -8,7 +8,12 @@ export default function Articles({ articles }) {
       <h2>Popular Articles</h2>
       {articles.map((article) => (
         <Fragment key={article.id}>
-          <Link to={`/articles/${article.id}`}>{article.title}</Link>
+          <Link
+            to={`/articles/${article.id}`}
+            style={{ textDecoration: "none" }}
+          >
+            {article.title}
+          </Link>
           <br />
           <h3>{article.topic}</h3>
         </Fragment>

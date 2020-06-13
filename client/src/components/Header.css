@@ -19,7 +19,10 @@
 .right-side {
   display: flex;
   width: max-content;
-  align-items: center;
+  /* align-items: flex-end; */
+  /* padding-right: 15px; */
+  justify-content: space-between;
+  margin: 35px;
 }
 .s-link {
   margin: 5px;
@@ -27,6 +30,9 @@
 .blog-logo {
   flex-direction: column;
   justify-content: start;
+}
+
+.user-username {
 }
 .navbar-link {
   display: flex;
@@ -38,6 +44,10 @@
   text-decoration: none;
   color: #ffffff;
   letter-spacing: 0.32px;
+}
+.header-logo {
+  text-decoration: none;
+  padding-left: 15px;
 }
 
 @media (max-width: 900px) {
