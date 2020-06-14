@@ -56,12 +56,13 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
     # Set current user to article
-    def set_user
-      @article = @current_user.articles.find(params[:id])
-    end
+    # def set_user
+    #   @article = @current_user.articles.find(params[:id])
+    # end
 
     # Only allow a trusted parameter "white list" through.
+    #Bug origin category chaged to topic
     def article_params
-      params.require(:article).permit(:title, :description, :category)
+      params.require(:article).permit(:title, :description, :topic)
     end
 end
