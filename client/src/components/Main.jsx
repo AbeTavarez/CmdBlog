@@ -26,7 +26,7 @@ export default class Main extends Component {
     users: [],
     categories: [],
   };
-
+  //* Gets All Data
   componentDidMount() {
     this.getArticles();
     this.getUsers();
@@ -65,7 +65,7 @@ export default class Main extends Component {
     console.log(articles);
     this.setState({ articles });
   };
-
+  //* Creates Article and set it to state
   postArticle = async (articleData) => {
     const newArticle = await createArticle(articleData);
     this.setState((prevState) => ({
@@ -198,10 +198,9 @@ export default class Main extends Component {
           />
           <Route
             exact
-            path="/articles/:id/edit"
+            path="/article/:id/edit"
             render={(props) => {
               const articleId = props.match.params.id;
-
               const article = this.state.articles.find(
                 (article) => article.id === parseInt(articleId)
               );
