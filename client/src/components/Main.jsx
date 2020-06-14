@@ -197,9 +197,9 @@ export default class Main extends Component {
               );
             }}
           />
-          {/* <Route
+          <Route
             exact
-            path="/new/article"
+            path="/article/:id"
             render={(props) => {
               const articleId = props.match.params.id;
               return (
@@ -209,7 +209,7 @@ export default class Main extends Component {
                 />
               );
             }}
-          /> */}
+          />
         </Switch>
       </div>
     );
