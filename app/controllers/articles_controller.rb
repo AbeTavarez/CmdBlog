@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   def create
     @article = Article.new(article_params)
-
+    puts @article
     if @article.save
       render json: @article, status: :created, location: @article
     else
@@ -54,6 +54,10 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
+    end
+    # Set current user to article
+    def set_user
+      @article = @current_user.articles.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

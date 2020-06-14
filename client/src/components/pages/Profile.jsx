@@ -38,7 +38,13 @@ export default class Profile extends Component {
       <>
         <div>
           <h2>My Articles Component</h2>
-          <button>Create New Article</button>
+          <button
+            onClick={() => {
+              history.push("/new/article");
+            }}
+          >
+            Create New Article
+          </button>
         </div>
 
         {this.state.userArticles.map((article) => (

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import {
   getAllArticles,
@@ -84,129 +84,133 @@ export default class Main extends Component {
   render() {
     return (
       <div className="container">
-        <Route
-          path="/user/login"
-          render={(props) => (
-            <Login
-              {...props}
-              handleLoginSubmit={this.props.handleLoginSubmit}
-            />
-          )}
-        />
-
-        <Route
-          path="/user/register"
-          render={(props) => (
-            <Register
-              {...props}
-              handleRegisterSubmit={this.props.handleRegisterSubmit}
-            />
-          )}
-        />
-
-        <Route
-          exact
-          path="/"
-          render={(props) => (
-            <Articles
-              {...props}
-              articles={this.state.articles}
-              currentUser={this.props.currentUser}
-            />
-          )}
-        />
-
-        <Route
-          exact
-          path="/articles"
-          render={(props) => (
-            <Articles
-              {...props}
-              articles={this.state.articles}
-              currentUser={this.props.currentUser}
-            />
-          )}
-        />
-
-        <Route
-          exact
-          path="/articles/:id"
-          render={(props) => (
-            <Article
-              {...props}
-              articles={this.state.articles}
-              currentUser={this.state.currentUser}
-              destroyArticle={this.destroyArticle}
-              putArticle={this.putArticle}
-              postArticle={this.postArticle}
-            />
-          )}
-        />
-
-        <Route
-          exact
-          path="/categories"
-          render={(props) => (
-            <Categories
-              {...props}
-              articles={this.state.articles}
-              currentUser={this.props.currentUser}
-              users={this.state.users}
-            />
-          )}
-        />
-
-        <Route
-          exact
-          path="/profile"
-          render={(props) => (
-            <Profile
-              {...props}
-              articles={this.state.articles}
-              currentUser={this.props.currentUser}
-              destroyArticle={this.destroyArticle}
-              putArticle={this.putArticle}
-              postArticle={this.postArticle}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/articles/create"
-          render={(props) => (
-            <CreateArticle {...props} postArticle={this.postArticle} />
-          )}
-        />
-        <Route
-          exact
-          path="/articles/:id/edit"
-          render={(props) => {
-            const articleId = props.match.params.id;
-            const article = this.state.articles.find(
-              (article) => article.id === parseInt(articleId)
-            );
-            return (
-              <EditArticle
+        <Switch>
+          <Route
+            exact
+            path="/user/login"
+            render={(props) => (
+              <Login
                 {...props}
-                article={article}
-                putArticle={this.putArticle}
+                handleLoginSubmit={this.props.handleLoginSubmit}
               />
-            );
-          }}
-        />
-        <Route
-          exact
-          path="/articles/:id"
-          render={(props) => {
-            const articleId = props.match.params.id;
-            return (
-              <Article
-                articleId={articleId}
+            )}
+          />
+
+          <Route
+            exact
+            path="/user/register"
+            render={(props) => (
+              <Register
+                {...props}
+                handleRegisterSubmit={this.props.handleRegisterSubmit}
+              />
+            )}
+          />
+
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Articles
+                {...props}
+                articles={this.state.articles}
                 currentUser={this.props.currentUser}
               />
-            );
-          }}
-        />
+            )}
+          />
+
+          <Route
+            exact
+            path="/articles"
+            render={(props) => (
+              <Articles
+                {...props}
+                articles={this.state.articles}
+                currentUser={this.props.currentUser}
+              />
+            )}
+          />
+
+          <Route
+            exact
+            path="/articles/:id"
+            render={(props) => (
+              <Article
+                {...props}
+                articles={this.state.articles}
+                currentUser={this.state.currentUser}
+                destroyArticle={this.destroyArticle}
+                putArticle={this.putArticle}
+                postArticle={this.postArticle}
+              />
+            )}
+          />
+
+          <Route
+            exact
+            path="/categories"
+            render={(props) => (
+              <Categories
+                {...props}
+                articles={this.state.articles}
+                currentUser={this.props.currentUser}
+                users={this.state.users}
+              />
+            )}
+          />
+
+          <Route
+            exact
+            path="/profile"
+            render={(props) => (
+              <Profile
+                {...props}
+                articles={this.state.articles}
+                currentUser={this.props.currentUser}
+                destroyArticle={this.destroyArticle}
+                putArticle={this.putArticle}
+                postArticle={this.postArticle}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/new/article"
+            render={(props) => (
+              <CreateArticle {...props} postArticle={this.postArticle} />
+            )}
+          />
+          <Route
+            exact
+            path="/articles/:id/edit"
+            render={(props) => {
+              const articleId = props.match.params.id;
+              const article = this.state.articles.find(
+                (article) => article.id === parseInt(articleId)
+              );
+              return (
+                <EditArticle
+                  {...props}
+                  article={article}
+                  putArticle={this.putArticle}
+                />
+              );
+            }}
+          />
+          {/* <Route
+            exact
+            path="/new/article"
+            render={(props) => {
+              const articleId = props.match.params.id;
+              return (
+                <Article
+                  articleId={articleId}
+                  currentUser={this.props.currentUser}
+                />
+              );
+            }}
+          /> */}
+        </Switch>
       </div>
     );
   }

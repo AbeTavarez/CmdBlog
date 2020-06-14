@@ -5,9 +5,19 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
+  background-color: #047aed;
   height: 100px;
   font-family: "Open Sans, sans-serif";
+}
+.header-a {
+  text-decoration: none;
+}
+.header-a,
+.header-a :visited {
+  color: white;
+}
+.header-a :hover {
+  font-weight: 400;
 }
 
 .left-side {

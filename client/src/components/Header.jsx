@@ -8,10 +8,10 @@ export default function Header(props) {
     <div className="header-container">
       <div className="left-side">
         <NavLink to="/" className="header-logo">
-          <h2 className="">CommandBlog</h2>
+          <h2 className=" header-a ">CommandBlog</h2>
         </NavLink>
 
-        <nav className="navbar-link">
+        <nav className="navbar-link  header-a ">
           <NavLink className="s-link" to="/articles">
             Articles
           </NavLink>
@@ -21,9 +21,9 @@ export default function Header(props) {
         </nav>
       </div>
 
-      <div className="right-side">
+      <div className="right-side header-a ">
         {props.currentUser ? (
-          <div className="user-username">
+          <div className="user-username header-a ">
             {props.currentUser.username}
             <button onClick={props.handleLogout}>Logout</button>
           </div>
