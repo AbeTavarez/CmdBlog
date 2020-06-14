@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Categories = ({ users }) => {
+const Categories = ({ users, categories }) => {
+  console.log("categories-->", categories);
   return (
     <>
-      {users.map((user) => (
-        <h3>{user.username}</h3>
+      {categories.map((category) => (
+        <h3 key={category.id}>{category.name}</h3>
       ))}
     </>
   );

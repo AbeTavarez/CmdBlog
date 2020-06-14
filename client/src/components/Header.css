@@ -14,7 +14,7 @@
 }
 .header-a,
 .header-a :visited {
-  color: white;
+  color: red;
 }
 .header-a :hover {
   font-weight: 400;

@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 export default function Articles({ articles }) {
+  console.log("articles-->", articles);
   return (
     <>
       <h2>Popular Articles</h2>

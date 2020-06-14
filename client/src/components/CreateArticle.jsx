@@ -2,9 +2,11 @@ import React, { Component } from "react";
 
 export default class CreateArticle extends Component {
   state = {
-    title: "",
-    description: "",
-    topic: "",
+    article: {
+      title: "",
+      description: "",
+      topic: "",
+    },
   };
   handleChange = (e) => {
     const { name, value } = e.target;

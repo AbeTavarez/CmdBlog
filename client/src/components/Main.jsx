@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import {
   getAllArticles,
@@ -8,6 +8,7 @@ import {
   updateArticle,
   deleteArticle,
 } from "../services/articles";
+import { getAllCategories } from "../services/categories";
 import { getAllUsers, createUser, deleteUser } from "../services/users";
 
 import Articles from "./Articles";
@@ -23,18 +24,19 @@ export default class Main extends Component {
   state = {
     articles: [],
     users: [],
+    categories: [],
   };
 
   componentDidMount() {
     this.getArticles();
     this.getUsers();
+    this.getCategories();
   }
 
   //* Users
   getUsers = async () => {
     const users = await getAllUsers();
     this.setState({ users });
-    console.log(users);
   };
 
   postUser = async (userData) => {
@@ -49,6 +51,12 @@ export default class Main extends Component {
     this.setState((prevState) => ({
       users: prevState.users.filter((user) => user.id !== id),
     }));
+  };
+
+  //* Categories
+  getCategories = async () => {
+    const categories = await getAllCategories();
+    this.setState({ categories });
   };
 
   //* Articles
@@ -134,16 +142,23 @@ export default class Main extends Component {
           <Route
             exact
             path="/articles/:id"
-            render={(props) => (
-              <Article
-                {...props}
-                articles={this.state.articles}
-                currentUser={this.state.currentUser}
-                destroyArticle={this.destroyArticle}
-                putArticle={this.putArticle}
-                postArticle={this.postArticle}
-              />
-            )}
+            render={(props) => {
+              const articleId = props.match.params.id;
+              const article = this.state.articles.find(
+                (article) => article.id === parseInt(articleId)
+              );
+              console.log(article);
+              return (
+                <Article
+                  {...props}
+                  article={article}
+                  currentUser={this.state.currentUser}
+                  destroyArticle={this.destroyArticle}
+                  putArticle={this.putArticle}
+                  postArticle={this.postArticle}
+                />
+              );
+            }}
           />
 
           <Route
@@ -152,6 +167,7 @@ export default class Main extends Component {
             render={(props) => (
               <Categories
                 {...props}
+                categories={this.state.categories}
                 articles={this.state.articles}
                 currentUser={this.props.currentUser}
                 users={this.state.users}
@@ -185,6 +201,7 @@ export default class Main extends Component {
             path="/articles/:id/edit"
             render={(props) => {
               const articleId = props.match.params.id;
+
               const article = this.state.articles.find(
                 (article) => article.id === parseInt(articleId)
               );
@@ -197,7 +214,7 @@ export default class Main extends Component {
               );
             }}
           />
-          <Route
+          {/* <Route
             exact
             path="/article/:id"
             render={(props) => {
@@ -209,6 +226,10 @@ export default class Main extends Component {
                 />
               );
             }}
+          /> */}
+          <Redirect
+            path="/"
+            // {this.props.currentUser ? <Redirect to="/profile" /> : <Articles />}
           />
         </Switch>
       </div>

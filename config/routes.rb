@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   #resources:::::::::::::::::::::
-  resources :users do
-    resources :articles do
+  resources :users 
+    resources :articles 
       resources :comments
-    end
-  end
+ 
   resources :categories
+ 
+  
+
   #:::::Authentication routes:::::::
   post '/auth/login', to: 'authentication#login'
   get '/auth/verify', to: 'authentication#verify'
