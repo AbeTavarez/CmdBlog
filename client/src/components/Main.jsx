@@ -19,13 +19,30 @@ import Profile from "./pages/Profile";
 import Article from "./Article";
 import CreateArticle from "./CreateArticle";
 import "./Main.css";
-import EditArticle from "./pages/Edit";
+import EditArticle from "./pages/EditArticle";
 export default class Main extends Component {
   state = {
     articles: [],
     users: [],
     categories: [],
+    formData: {
+      title: "",
+      topic: "",
+      description: "",
+    },
   };
+
+  componentDidMount() {
+    if (this.props.currentUser) {
+      this.getArticles();
+    }
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentUser !== this.props.currentUser) {
+      this.getArticles();
+    }
+  }
+
   //* Gets All Data
   componentDidMount() {
     this.getArticles();
@@ -89,6 +106,17 @@ export default class Main extends Component {
     }));
   };
 
+  //* Handles change
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState((prevState) => ({
+      formData: {
+        ...prevState.formData,
+        [name]: value,
+      },
+    }));
+  };
+
   render() {
     return (
       <div className="container">
@@ -144,15 +172,14 @@ export default class Main extends Component {
             path="/articles/:id"
             render={(props) => {
               const articleId = props.match.params.id;
-              const article = this.state.articles.find(
+              const currentArticle = this.state.articles.find(
                 (article) => article.id === parseInt(articleId)
               );
-              console.log(article);
+              console.log(currentArticle);
               return (
                 <Article
                   {...props}
-                  article={article}
-                  currentUser={this.state.currentUser}
+                  currentArticle={currentArticle}
                   destroyArticle={this.destroyArticle}
                   putArticle={this.putArticle}
                   postArticle={this.postArticle}
@@ -201,14 +228,15 @@ export default class Main extends Component {
             path="/article/:id/edit"
             render={(props) => {
               const articleId = props.match.params.id;
-              const article = this.state.articles.find(
-                (article) => article.id === parseInt(articleId)
-              );
+              const currentArticle = this.state.formData;
               return (
                 <EditArticle
                   {...props}
-                  article={article}
+                  articleId={articleId}
+                  articleData={this.state.formData}
                   putArticle={this.putArticle}
+                  currentArticle={currentArticle}
+                  handleChange={this.handleChange}
                 />
               );
             }}

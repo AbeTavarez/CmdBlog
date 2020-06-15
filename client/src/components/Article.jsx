@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 export default class Article extends Component {
   render() {
-    const { article } = this.props;
-    console.log("single-->", article);
-    console.log(article);
+    const { currentArticle } = this.props;
+    // console.log("single-->", article);
+    // console.log(article);
     return (
       <div>
         <h1>Article id </h1>
-        {/* <div>{article.topic}</div> */}
+        <div>{currentArticle.title}</div>
       </div>
       // <div>
       //   <hr />

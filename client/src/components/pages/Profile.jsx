@@ -12,6 +12,11 @@ import {
 export default class Profile extends Component {
   state = {
     userArticles: [],
+    formData: {
+      title: "",
+      topic: "",
+      description: "",
+    },
   };
 
   componentDidMount() {
@@ -33,7 +38,7 @@ export default class Profile extends Component {
   render() {
     console.log("User", this.props.currentUser);
     console.log(this.state.userArticles);
-    const { articles, currentUser, destroyArticle, history } = this.props;
+    const { currentUser, destroyArticle, history } = this.props;
     return (
       <>
         <div>

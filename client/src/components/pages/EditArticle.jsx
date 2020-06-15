@@ -1,13 +1,18 @@
 import React from "react";
 
-export default function Edit({ title, topic, description }) {
-  console.log("edit component-->", this.this.props);
+export default function Edit({
+  articleId,
+  articleData,
+  putArticle,
+  currentArticle,
+  handleChange,
+}) {
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          props.putArticle();
+          putArticle(articleId, articleData);
         }}
       >
         <hr />
@@ -18,9 +23,9 @@ export default function Edit({ title, topic, description }) {
             id="title_id"
             type="text"
             name="title"
-            value={title}
+            value={articleData.title}
             required
-            onChange={this.handleChange}
+            onChange={handleChange}
           />
         </label>
         {/* <label htmlFor="imagePath">
@@ -40,9 +45,9 @@ export default function Edit({ title, topic, description }) {
             id="topic_id"
             type="text"
             name="topic"
-            value={topic}
+            value={articleData.topic}
             required
-            onChange={this.handleChange}
+            onChange={handleChange}
           />
         </label>
 
@@ -52,9 +57,9 @@ export default function Edit({ title, topic, description }) {
             rows={10}
             cols={78}
             name="description"
-            value={description}
+            value={articleData.description}
             required
-            onChange={this.handleChange}
+            onChange={handleChange}
           />
         </label>
 
