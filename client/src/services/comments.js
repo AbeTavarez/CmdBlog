@@ -4,7 +4,7 @@ export const getAllComments = async (id) => {
   const res = await api.get(`/articles/${id}/comments`);
   return res.data;
 };
-export const createArticle = async (commentData) => {
+export const createArticle = async (id, commentData) => {
   const res = await api.post(`/articles/${id}/comments`, {
     article: commentData,
   });

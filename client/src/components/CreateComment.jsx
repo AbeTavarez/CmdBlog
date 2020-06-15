@@ -4,8 +4,8 @@ export default class CreateComment extends Component {
   state = {
     comment: {
       content: "",
-      user: "",
-      article: "",
+      user: props.user,
+      article: props.article,
     },
   };
   handleChange = (e) => {
@@ -22,13 +22,16 @@ export default class CreateComment extends Component {
     const { content, user, article } = this.state.article;
     return (
       <form>
-        <input
+        <textarea
+          rows={10}
           className="comment-input"
           placeholder="write commment here..."
           value={comment.content}
+          required
           autoFocus
           onChange={this.handleChange}
         />
+        <button type="submit">comment</button>
       </form>
     );
   }
