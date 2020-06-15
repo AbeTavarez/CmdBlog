@@ -10,18 +10,18 @@ export default class Edit extends Component {
     },
   };
 
-  async componentDidMount() {
-    this.setState({ article: this.props.currentArticle });
+  componentDidMount() {
+    this.setState({ article: this.props.currentArticleData });
   }
 
   handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState({
+    console.log(name, value);
+    this.setState((prevState) => ({
       article: {
-        ...this.state.article,
         [name]: value,
       },
-    });
+    }));
   };
   handleSubmit = (e) => {
     e.preventDefault();
@@ -29,16 +29,11 @@ export default class Edit extends Component {
     console.log("from edit Article->>.", this.state.article);
     const { putArticle, history } = this.props;
     putArticle(this.props.articleId, article);
-    history.push("/profile");
+    history.push("/");
   };
   render() {
-    console.log("from edit--->", this.props.currentArticleData);
-    const {
-      title,
-      topic,
-      description,
-      category_id,
-    } = this.props.currentArticle;
+    console.log("from edit--->", this.state.currentArticleData);
+    const { title, topic, description, category_id } = this.state.article;
 
     return (
       <div>

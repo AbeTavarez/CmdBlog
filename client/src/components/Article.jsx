@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { getAllComments } from "../services/comments";
 import Comments from "./Comments";
+import CreateComment from "./CreateComment";
 
 export default class Article extends Component {
   state = {
@@ -51,6 +52,12 @@ export default class Article extends Component {
           <div>
             <div>{articleComments}</div>
           </div>
+          {
+            // <CreateComment
+            //   // currentUser={this.props.currentUser}
+            //   currentArticle={currentArticle}
+            // />
+          }
         </div>
       </div>
     );

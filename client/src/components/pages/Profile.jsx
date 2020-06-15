@@ -14,34 +14,9 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
 export default class Profile extends Component {
-  state = {
-    userArticles: [],
-    formData: {
-      title: "",
-      topic: "",
-      description: "",
-    },
-  };
-
-  componentDidMount() {
-    if (this.props.currentUser) {
-      this.getUserArticles();
-    }
-  }
-  componentDidUpdate(prevProps) {
-    if (prevProps.currentUser !== this.props.currentUser) {
-      this.getUserArticles();
-    }
-  }
-
-  getUserArticles = async () => {
-    const userArticles = await getUserArticles();
-    this.setState({ userArticles });
-  };
-
   render() {
-    console.log("User", this.props.currentUser);
-    console.log(this.state.userArticles);
+    console.log("User", this.props.articles);
+
     const { currentUser, destroyArticle, history } = this.props;
     return (
       <>
@@ -57,7 +32,7 @@ export default class Profile extends Component {
           </button>
         </div>
 
-        {this.state.userArticles.map((article) => (
+        {this.props.articles.map((article) => (
           <Fragment key={article.id}>
             <Link to={`/articles/${article.id}`}>{article.title}</Link>
             {currentUser && currentUser.id === article.user_id && (
