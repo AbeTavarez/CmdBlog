@@ -15,7 +15,7 @@ export default function Articles({ articles }) {
             {article.title}
           </Link>
           <br />
-          <h3>{article.topic}</h3>
+          <h5>{article.topic}</h5>
         </div>
       ))}
     </>

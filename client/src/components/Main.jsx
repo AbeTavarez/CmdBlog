@@ -35,17 +35,20 @@ export default class Main extends Component {
   componentDidMount() {
     if (this.props.currentUser) {
       this.getArticles();
+      this.getCategories();
+      this.getUsers();
     }
   }
   componentDidUpdate(prevProps) {
     if (prevProps.currentUser !== this.props.currentUser) {
       this.getArticles();
+      this.getCategories();
     }
   }
 
   //* Gets All Data
   componentDidMount() {
-    // this.getArticles();
+    this.getArticles();
     this.getUsers();
     this.getCategories();
   }
