@@ -25,9 +25,10 @@ export default class Edit extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
+    const { article } = this.state;
     console.log("from edit Article->>.", this.state.article);
     const { putArticle, history } = this.props;
-    putArticle(this.state.article);
+    putArticle(this.props.articleId, article);
     history.push("/profile");
   };
   render() {
@@ -38,20 +39,10 @@ export default class Edit extends Component {
       description,
       category_id,
     } = this.props.currentArticle;
-    // this.setState({
-    //   formData: {
-    //     title,
-    //     topic,
-    //     description,
-    //   },
-    // });
+
     return (
       <div>
-        <form
-          onSubmit={(e) => {
-            this.handleSubmit;
-          }}
-        >
+        <form onSubmit={this.handleSubmit}>
           <hr />
           <h3>Edit Article</h3>
           <label htmlFor="title">
@@ -62,7 +53,8 @@ export default class Edit extends Component {
               name="title"
               value={title}
               required
-              onChange={props.handleChange}
+              autoFocus
+              onChange={this.handleChange}
             />
           </label>
           {/* <label htmlFor="imagePath">
@@ -84,7 +76,19 @@ export default class Edit extends Component {
               name="topic"
               value={topic}
               required
-              onChange={props.handleChange}
+              onChange={this.handleChange}
+            />
+          </label>
+
+          <label>
+            Category id
+            <input
+              id="category_id"
+              type="number"
+              name="category_id"
+              value={category_id}
+              required
+              onChange={this.handleChange}
             />
           </label>
 
@@ -96,7 +100,7 @@ export default class Edit extends Component {
               name="description"
               value={description}
               required
-              onChange={props.handleChange}
+              onChange={this.handleChange}
             />
           </label>
 

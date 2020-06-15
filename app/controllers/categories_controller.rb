@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1
   def show
-    render json: @category
+    render json: @category, include: :articles
   end
 
   # POST /categories
