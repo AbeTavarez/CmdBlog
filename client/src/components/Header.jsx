@@ -2,6 +2,9 @@ import React from "react";
 
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
+import PersonIcon from "@material-ui/icons/Person";
+import Button from "@material-ui/core/Button";
+import { green, purple } from "@material-ui/core/colors";
 
 export default function Header(props) {
   return (
@@ -13,10 +16,10 @@ export default function Header(props) {
 
         <nav className="navbar-link  header-a ">
           <NavLink className="s-link" to="/articles">
-            Articles
+            <Button style={{ color: "white" }}>Articles</Button>
           </NavLink>
           <NavLink className="s-link" to="/categories">
-            Categories
+            <Button style={{ color: "white" }}>Categories</Button>
           </NavLink>
         </nav>
       </div>
@@ -25,18 +28,31 @@ export default function Header(props) {
         {props.currentUser ? (
           <div className="user-username header-a ">
             {props.currentUser.username}
-            <button onClick={props.handleLogout}>Logout</button>
+
+            <Button
+              onClick={props.handleLogout}
+              variant="outlined"
+              color="secondary"
+            >
+              Logout
+            </Button>
           </div>
         ) : (
           <div>
-            <Link to="/user/login">Login::Register</Link>
+            <Link to="/user/login">
+              <Button variant="outlined" color="secondary">
+                Login/Register
+              </Button>
+            </Link>
           </div>
         )}
 
         <div>
           {props.currentUser && (
             <nav>
-              <NavLink to="/profile">Profile</NavLink>
+              <NavLink to="/profile">
+                <PersonIcon />
+              </NavLink>
             </nav>
           )}
         </div>

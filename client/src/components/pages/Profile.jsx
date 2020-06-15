@@ -9,6 +9,10 @@ import {
   getUserArticles,
 } from "../../services/articles";
 
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+
 export default class Profile extends Component {
   state = {
     userArticles: [],
@@ -48,7 +52,8 @@ export default class Profile extends Component {
               history.push("/new/article");
             }}
           >
-            Create New Article
+            Create new Article
+            {<AddCircleIcon style={{ color: "#047aed" }} />}
           </button>
         </div>
 
@@ -63,9 +68,11 @@ export default class Profile extends Component {
                   onClick={() => history.push(`/article/${article.id}/edit`)}
                 >
                   edit
+                  {<EditIcon style={{ color: "green" }} />}
                 </button>
                 <button onClick={() => destroyArticle(article.id)}>
-                  delete
+                  Delete
+                  {<DeleteForeverIcon color="secondary" />}
                 </button>
               </>
             )}
