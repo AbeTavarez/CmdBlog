@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   #resources:::::::::::::::::::::
   resources :users 
-    resources :articles 
+    resources :articles do
       resources :comments
- 
+    end
   resources :categories
  
   

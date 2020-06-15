@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authorize_request, only: [:userArticles,:create, :update, :destroy]
   before_action :set_article, only: [:show, :update, :destroy]
-
   # GET /articles
   def index
 
@@ -28,9 +27,10 @@ class ArticlesController < ApplicationController
   # POST /articles
   def create
     @article = Article.new(article_params)
+    @article.user = @current_user
     puts @article
     if @article.save
-      render json: @article, status: :created, location: @article
+      render json: @article, status: :created
     else
       render json: @article.errors, status: :unprocessable_entity
     end
@@ -63,6 +63,6 @@ class ArticlesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     #Bug origin category chaged to topic
     def article_params
-      params.require(:article).permit(:title, :description, :topic)
+      params.require(:article).permit(:title, :description, :topic, :category_id)
     end
 end

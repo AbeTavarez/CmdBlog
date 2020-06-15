@@ -45,7 +45,7 @@ export default class Main extends Component {
 
   //* Gets All Data
   componentDidMount() {
-    this.getArticles();
+    // this.getArticles();
     this.getUsers();
     this.getCategories();
   }
@@ -116,8 +116,35 @@ export default class Main extends Component {
       },
     }));
   };
+  // //* sets formdata
+  // setArticleInState = (currentArticle) => {
+  //   const { title, topic, description } = currentArticle;
+  //   this.setState({
+  //     formData: {
+  //       title,
+  //       topic,
+  //       description,
+  //     },
+  //   });
+  // };
+
+  //* Commments
+  // createComment = async (articleId, userInput) => {
+  //   const newComment = await createComment(articleId, userInput);
+
+  //   this.setState((prevState) => ({
+  //     articles: prevState.articles.map((art) => {
+  //       if (art.id === newComment.article_id) {
+  //         art.comments.push(newComment);
+  //       }
+  //       return art;
+  //     }),
+  //   }));
+  // };
 
   render() {
+    // console.log(this.state)
+    // console.log(this.formData)
     return (
       <div className="container">
         <Switch>
@@ -220,7 +247,11 @@ export default class Main extends Component {
             exact
             path="/new/article"
             render={(props) => (
-              <CreateArticle {...props} postArticle={this.postArticle} />
+              <CreateArticle
+                {...props}
+                postArticle={this.postArticle}
+                categories={this.state.categories}
+              />
             )}
           />
           <Route
@@ -228,7 +259,11 @@ export default class Main extends Component {
             path="/article/:id/edit"
             render={(props) => {
               const articleId = props.match.params.id;
-              const currentArticle = this.state.formData;
+              const currentArticle = this.state.articles.find(
+                (article) => article.id === parseInt(articleId)
+              );
+              // this.setArticleInState(currentArticle);
+              // const currentArticleData = this.state.formData;
               return (
                 <EditArticle
                   {...props}
