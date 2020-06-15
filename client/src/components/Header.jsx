@@ -8,10 +8,10 @@ import { green, purple } from "@material-ui/core/colors";
 
 export default function Header(props) {
   return (
-    <div className="header-container">
+    <nav className="header-container">
       <div className="left-side">
         <NavLink to="/" className="header-logo">
-          <h2 className=" header-a ">CommandBlog</h2>
+          <h2 className="logo  header-a">CommandBlog</h2>
         </NavLink>
 
         <nav className="navbar-link  header-a ">
@@ -57,6 +57,6 @@ export default function Header(props) {
           )}
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
