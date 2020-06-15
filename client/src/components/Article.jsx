@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
 import { getAllComments } from "../services/comments";
 import Comments from "./Comments";
 import CreateComment from "./CreateComment";

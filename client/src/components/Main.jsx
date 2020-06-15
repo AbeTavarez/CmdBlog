@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import {
   getAllArticles,
-  getSingleArticle,
   getUserArticles,
   createArticle,
   updateArticle,
   deleteArticle,
 } from "../services/articles";
+
 import { getAllCategories } from "../services/categories";
 import { getAllUsers, createUser, deleteUser } from "../services/users";
 
@@ -88,7 +88,6 @@ export default class Main extends Component {
   //* Articles
   getArticles = async () => {
     const articles = await getAllArticles();
-    console.log(articles);
     this.setState({ articles });
   };
   //* Creates Article and set it to state

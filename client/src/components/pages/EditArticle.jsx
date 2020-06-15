@@ -16,7 +16,6 @@ export default class Edit extends Component {
 
   handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     this.setState((prevState) => ({
       article: {
         [name]: value,
@@ -32,7 +31,6 @@ export default class Edit extends Component {
     history.push("/");
   };
   render() {
-    console.log("from edit--->", this.state.currentArticleData);
     const { title, topic, description, category_id } = this.state.article;
 
     return (
