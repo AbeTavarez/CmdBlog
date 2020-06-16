@@ -39,7 +39,7 @@ export default class Article extends Component {
             <div>
               <div className="article-title">{currentArticle.title}</div>
             </div>
-            <div>
+            <div className="img-size">
               <img src={currentArticle.image_path} />
             </div>
             <div>

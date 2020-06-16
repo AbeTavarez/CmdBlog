@@ -30,6 +30,12 @@
   overflow: hidden;
   background: white;
 }
+.img-size {
+  max-width: 50%;
+  max-height: 100%;
+  display: flex;
+  margin: 0 auto;
+}
 .comm {
   background-color: #047aed;
   color: white;
@@ -50,6 +56,14 @@
     margin: 0 300px;
     padding: 15px;
   }
+  img-size {
+    max-width: 100%;
+    height: auto;
+    /* max-width: 25%;
+    max-height: 100%;
+    display: flex;
+    margin: 0 auto; */
+  }
 }
 
 @media (max-width: 500px) {
@@ -64,5 +78,11 @@
     height: 400px;
     margin: 0 300px;
     padding: 15px;
+  }
+  img-size {
+    max-width: 50%;
+    max-height: 100%;
+    display: flex;
+    margin: 0 auto;
   }
 }
