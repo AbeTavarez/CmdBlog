@@ -104,7 +104,7 @@ export default class Main extends Component {
 
     this.setState((prevState) => ({
       articles: prevState.articles.map((article) =>
-        article.id == id ? updatedArticle : article
+        article.id === id ? updatedArticle : article
       ),
     }));
   };
@@ -113,7 +113,7 @@ export default class Main extends Component {
     await deleteArticle(id);
     this.setState((prevState) => ({
       userArticles: prevState.userArticles.filter(
-        (article) => article.id != id
+        (article) => article.id !== id
       ),
     }));
   };
