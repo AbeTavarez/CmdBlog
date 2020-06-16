@@ -5,6 +5,7 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import { Button } from "@material-ui/core";
+import "./Profile.css";
 
 export default class Profile extends Component {
   render() {
@@ -12,20 +13,22 @@ export default class Profile extends Component {
     return (
       <>
         <div>
-          <h2>My Articles Component</h2>
+          <h1 className="profile">Profile</h1>
           <Button
             onClick={() => {
               history.push("/new/article");
             }}
           >
-            Create new Article
+            <div className="create-new">Create new Article</div>
             {<AddCircleIcon style={{ color: "#047aed" }} />}
           </Button>
         </div>
 
         {this.props.articles.map((article) => (
           <Fragment key={article.id}>
-            <Link to={`/articles/${article.id}`}>{article.title}</Link>
+            <Link to={`/articles/${article.id}`} className="profile-area">
+              {article.title}
+            </Link>
             {currentUser && currentUser.id === article.user_id && (
               <>
                 <Button
@@ -40,7 +43,7 @@ export default class Profile extends Component {
                 </Button>
               </>
             )}
-            <br />
+            <hr />
           </Fragment>
         ))}
       </>

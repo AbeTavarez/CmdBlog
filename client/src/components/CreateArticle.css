@@ -13,14 +13,6 @@ select:focus {
   outline: none;
 }
 
-/* input,
-textarea {
-  font-size: 48px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom-style: hidden; */
 .input-area {
   margin: 15px;
 }
@@ -65,6 +57,17 @@ textarea {
   cursor: pointer;
 }
 
+@media (max-width: 350px) {
+  .create-form {
+    padding-top: 100px;
+  }
+
+  input,
+  textarea {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 500px) {
   .create-form {
     padding-top: 150px;
@@ -72,6 +75,6 @@ textarea {
 
   input,
   textarea {
-    font-size: 28px;
+    font-size: 14px;
   }
 }
