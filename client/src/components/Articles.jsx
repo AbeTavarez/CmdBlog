@@ -31,20 +31,24 @@ export default function Articles({ articles }) {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
   return (
-    <>
-      <h2>Popular Articles</h2>
+    <div className="sort-container">
+      <div variant="h3" color="textSecondary">
+        Popular Articles
+      </div>
       {articles.map((article) => (
-        <Card key={article.id}>
+        <div key={article.id}>
           <Link
             to={`/articles/${article.id}`}
             style={{ textDecoration: "none" }}
           >
-            {article.title}
+            <div className={classes.pos} color="textPrimary">
+              {article.title}
+            </div>
           </Link>
           <br />
           <h5>{article.topic}</h5>
-        </Card>
+        </div>
       ))}
-    </>
+    </div>
   );
 }

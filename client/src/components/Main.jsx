@@ -187,7 +187,6 @@ export default class Main extends Component {
               const currentArticle = this.state.articles.find(
                 (article) => article.id === parseInt(articleId)
               );
-              console.log(currentArticle);
               return (
                 <Article
                   {...props}

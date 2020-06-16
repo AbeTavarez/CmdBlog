@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import { Button } from "@material-ui/core";
 
 export default class Profile extends Component {
   render() {
@@ -12,14 +13,14 @@ export default class Profile extends Component {
       <>
         <div>
           <h2>My Articles Component</h2>
-          <button
+          <Button
             onClick={() => {
               history.push("/new/article");
             }}
           >
             Create new Article
             {<AddCircleIcon style={{ color: "#047aed" }} />}
-          </button>
+          </Button>
         </div>
 
         {this.props.articles.map((article) => (
@@ -27,16 +28,16 @@ export default class Profile extends Component {
             <Link to={`/articles/${article.id}`}>{article.title}</Link>
             {currentUser && currentUser.id === article.user_id && (
               <>
-                <button
+                <Button
                   onClick={() => history.push(`/article/${article.id}/edit`)}
                 >
                   edit
                   {<EditIcon style={{ color: "green" }} />}
-                </button>
-                <button onClick={() => destroyArticle(article.id)}>
+                </Button>
+                <Button onClick={() => destroyArticle(article.id)}>
                   Delete
                   {<DeleteForeverIcon color="secondary" />}
-                </button>
+                </Button>
               </>
             )}
             <br />

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getAllComments } from "../services/comments";
 import Comments from "./Comments";
-import CreateComment from "./CreateComment";
+// import CreateComment from "./CreateComment";
 
 export default class Article extends Component {
   state = {
@@ -32,33 +32,40 @@ export default class Article extends Component {
     console.log("single-->", currentArticle);
     // console.log(article);
     return (
-      <div>
-        <div>
-          <h1>{currentArticle.title}</h1>
-        </div>
-        <div>
-          <p>{currentArticle.topic}</p>
-        </div>
-        <div>
-          <p>{currentArticle.description}</p>
-        </div>
-        <div>
-          <p>Created: {currentArticle.created_at}</p>
-          <p>Last update: {currentArticle.updated_at}</p>
-          <p>Author: {currentArticle.user.username}</p>
-        </div>
-        <div className="comments">
-          <div>
-            <div>{articleComments}</div>
-          </div>
-          {
-            // <CreateComment
-            //   // currentUser={this.props.currentUser}
-            //   currentArticle={currentArticle}
-            // />
-          }
-        </div>
-      </div>
+      <>
+        {currentArticle && (
+          <>
+            <div>
+              <h1>{currentArticle.title}</h1>
+            </div>
+            <div>
+              <img src={currentArticle.image_path} />
+            </div>
+            <div>
+              <p>{currentArticle.topic}</p>
+            </div>
+            <div>
+              <p>{currentArticle.description}</p>
+            </div>
+            <div>
+              <p>Created: {currentArticle.created_at}</p>
+              <p>Last update: {currentArticle.updated_at}</p>
+              <p>Author: {currentArticle.user.username}</p>
+            </div>
+            <div className="comments">
+              <div>
+                <div>{articleComments}</div>
+              </div>
+              {
+                // <CreateComment
+                //   // currentUser={this.props.currentUser}
+                //   currentArticle={currentArticle}
+                // />
+              }
+            </div>
+          </>
+        )}
+      </>
     );
   }
 }

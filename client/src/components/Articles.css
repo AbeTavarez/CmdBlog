@@ -1,0 +1,19 @@
+.article-title {
+  text-decoration: none;
+  font-size: 35px;
+}
+a {
+  text-decoration: none;
+}
+
+@media (max-width: 500px) {
+  .products {
+    width: 100%;
+    justify-content: space-around;
+  }
+  .sort-container {
+    width: 100%;
+    justify-content: center;
+    margin: 0px;
+  }
+}

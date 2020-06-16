@@ -4,9 +4,10 @@ import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import PersonIcon from "@material-ui/icons/Person";
 import Button from "@material-ui/core/Button";
-import { green, purple } from "@material-ui/core/colors";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 export default function Header(props) {
+  // const isActive = useMediaQuery("(min-max:700");
   return (
     <nav className="header-container">
       <div className="left-side">
@@ -14,28 +15,37 @@ export default function Header(props) {
           <h2 className="logo  header-a">CommandBlog</h2>
         </NavLink>
 
-        <nav className="navbar-link  header-a ">
+        <div className="navbar-link  header-a ">
           <NavLink className="s-link" to="/articles">
             <Button style={{ color: "white" }}>Articles</Button>
           </NavLink>
           <NavLink className="s-link" to="/categories">
             <Button style={{ color: "white" }}>Categories</Button>
           </NavLink>
-        </nav>
+        </div>
       </div>
 
       <div className="right-side header-a ">
+        <div>
+          {props.currentUser && (
+            <nav>
+              <NavLink to="/profile">
+                <PersonIcon />
+              </NavLink>
+              <div>{props.currentUser.username}</div>
+            </nav>
+          )}
+        </div>
         {props.currentUser ? (
           <div className="user-username header-a ">
-            {props.currentUser.username}
-
-            <Button
+            <button
+              classname="logout-btn"
               onClick={props.handleLogout}
               variant="outlined"
               color="secondary"
             >
               Logout
-            </Button>
+            </button>
           </div>
         ) : (
           <div>
@@ -46,16 +56,6 @@ export default function Header(props) {
             </Link>
           </div>
         )}
-
-        <div>
-          {props.currentUser && (
-            <nav>
-              <NavLink to="/profile">
-                <PersonIcon />
-              </NavLink>
-            </nav>
-          )}
-        </div>
       </div>
     </nav>
   );
