@@ -16,6 +16,9 @@ a {
   font-size: 24px;
   color: #047aed;
 }
+.article-topic-articles {
+  text-align: center;
+}
 
 @media (max-width: 350) {
   .article-title {

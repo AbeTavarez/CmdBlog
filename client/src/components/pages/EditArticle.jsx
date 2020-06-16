@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import {
   FormControl,
-  InputLabel,
   Input,
   Button,
   TextareaAutosize,

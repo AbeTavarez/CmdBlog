@@ -17,7 +17,6 @@ export default class Article extends Component {
     let { id } = this.props.match.params;
     const comments = await getAllComments(id);
     this.setState({ comments });
-    console.log(this.state);
   };
   render() {
     const { currentArticle } = this.props;
@@ -30,8 +29,6 @@ export default class Article extends Component {
         user={comment.user.username}
       />
     ));
-    console.log("single-->", currentArticle);
-    // console.log(article);
     return (
       <>
         {currentArticle && (
@@ -39,12 +36,14 @@ export default class Article extends Component {
             <div>
               <div className="article-title">{currentArticle.title}</div>
             </div>
-            <div className="img-size">
-              <img src={currentArticle.image_path} />
-            </div>
-            <div>
-              <p>{currentArticle.topic}</p>
-            </div>
+
+            <img
+              className="image-self"
+              src={currentArticle.image_path}
+              alt={currentArticle.title}
+            />
+
+            <div className="art-topic">{currentArticle.topic}</div>
             <div className="article-container">
               <div>{currentArticle.description}</div>
               <div className="credits">
@@ -59,7 +58,7 @@ export default class Article extends Component {
               <div>
                 <div>
                   {articleComments.map((c) => (
-                    <div className="comm">
+                    <div className="comm" key={c.id}>
                       {<ThumbUpAltIcon />}
                       {c}by
                     </div>

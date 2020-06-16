@@ -1,5 +1,6 @@
 .create-form {
   padding-top: 50px;
+  align-content: center;
   display: flex;
   flex-direction: column;
   height: 100%;

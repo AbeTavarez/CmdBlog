@@ -12,7 +12,7 @@ export default class Profile extends Component {
     const { currentUser, destroyArticle, history } = this.props;
     return (
       <>
-        <div>
+        <div className="profile-area">
           <h1 className="profile">Profile</h1>
           <Button
             onClick={() => {
@@ -30,7 +30,7 @@ export default class Profile extends Component {
               {article.title}
             </Link>
             {currentUser && currentUser.id === article.user_id && (
-              <>
+              <div className="create-new">
                 <Button
                   onClick={() => history.push(`/article/${article.id}/edit`)}
                 >
@@ -41,7 +41,7 @@ export default class Profile extends Component {
                   Delete
                   {<DeleteForeverIcon color="secondary" />}
                 </Button>
-              </>
+              </div>
             )}
             <hr />
           </Fragment>
