@@ -39,70 +39,85 @@ export default class CreateArticle extends Component {
     } = this.state.article;
 
     return (
-      <form className="create-form" onSubmit={this.handleSubmit}>
-        <h3>Create new Article</h3>
-        <label htmlFor="title">
-          Title
-          <input
-            className="input-title"
-            id="title_id"
-            type="text"
-            name="title"
-            value={title}
-            required
-            autoFocus
-            onChange={this.handleChange}
-          />
-        </label>
-        <label htmlFor="imagePath">
-          Image Path
-          <input
-            id="image_path"
-            type="text"
-            name="image_path"
-            value={image_path}
-            required
-            onChange={this.handleChange}
-          />
-        </label>
-        <label htmlFor="topic">
-          Article Topic
-          <input
-            className="input-topic"
-            id="topic_id"
-            type="text"
-            name="topic"
-            value={topic}
-            required
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          Category id
-          <input
-            className="input-category"
-            id="category_id"
-            type="number"
-            name="category_id"
-            value={category_id}
-            required
-            onChange={this.handleChange}
-          />
-        </label>
+      <div className="create-form">
+        <form onSubmit={this.handleSubmit}>
+          <h3>Create new Article</h3>
+          <div className="input-area">
+            <label htmlFor="title">
+              <input
+                className="input-title"
+                placeholder="Article Title"
+                id="title_id"
+                type="text"
+                name="title"
+                value={title}
+                required
+                autoFocus
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+          <div className="input-area">
+            <label htmlFor="imagePath">
+              <input
+                className="input-image-link"
+                placeholder="Image Link"
+                id="image_path"
+                type="text"
+                name="image_path"
+                value={image_path}
+                required
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+          <div className="input-area">
+            <label htmlFor="input-topic">
+              <input
+                className="input-topic"
+                placeholder="Article Topic"
+                id="topic_id"
+                type="text"
+                name="topic"
+                value={topic}
+                required
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+          <div className="input-area">
+            <label>
+              <input
+                className="input-category"
+                id="category_id"
+                type="number"
+                name="category_id"
+                value={category_id}
+                required
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
 
-        <label htmlFor="description">
-          <textarea
-            rows={40}
-            cols={200}
-            name="description"
-            value={description}
-            required
-            onChange={this.handleChange}
-          />
-        </label>
+          <div>
+            <label htmlFor="description">
+              <textarea
+                className="input-description"
+                rows={20}
+                cols={80}
+                name="description"
+                value={description}
+                required
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
 
-        <button type="submit">Submit</button>
-      </form>
+          <button className="submit-btn" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
     );
   }
 }

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { getAllComments } from "../services/comments";
 import Comments from "./Comments";
 // import CreateComment from "./CreateComment";
-
+import "./Article.css";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 export default class Article extends Component {
   state = {
     comments: [],
@@ -34,9 +35,9 @@ export default class Article extends Component {
     return (
       <>
         {currentArticle && (
-          <>
+          <div>
             <div>
-              <h1>{currentArticle.title}</h1>
+              <div className="article-title">{currentArticle.title}</div>
             </div>
             <div>
               <img src={currentArticle.image_path} />
@@ -44,17 +45,26 @@ export default class Article extends Component {
             <div>
               <p>{currentArticle.topic}</p>
             </div>
-            <div>
-              <p>{currentArticle.description}</p>
-            </div>
-            <div>
-              <p>Created: {currentArticle.created_at}</p>
-              <p>Last update: {currentArticle.updated_at}</p>
-              <p>Author: {currentArticle.user.username}</p>
+            <div className="article-container">
+              <div>{currentArticle.description}</div>
+              <div className="credits">
+                <span>Created: {currentArticle.created_at}</span>
+                <br />
+                <span>Last update: {currentArticle.updated_at}</span>
+                <hr />
+                <span>Author: {currentArticle.user.username}</span>
+              </div>
             </div>
             <div className="comments">
               <div>
-                <div>{articleComments}</div>
+                <div>
+                  {articleComments.map((c) => (
+                    <div className="comm">
+                      {<ThumbUpAltIcon />}
+                      {c}by
+                    </div>
+                  ))}
+                </div>
               </div>
               {
                 // <CreateComment
@@ -63,7 +73,7 @@ export default class Article extends Component {
                 // />
               }
             </div>
-          </>
+          </div>
         )}
       </>
     );

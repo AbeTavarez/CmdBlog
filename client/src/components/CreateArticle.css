@@ -1,0 +1,77 @@
+.create-form {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* input,
+textarea {
+  font-size: 48px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden; */
+.input-area {
+  margin: 15px;
+}
+
+textarea {
+  font-size: 18px;
+  font-family: Georgia, "Open Sans", Times, serif;
+}
+
+.input-title {
+  font-size: 18px;
+  font-family: Georgia, "Open Sans", Times, serif;
+}
+
+.input-topic {
+  font-size: 18px;
+  font-family: Georgia, "Open Sans", Times, serif;
+}
+
+.input-image-link {
+  font-size: 18px;
+  font-family: Georgia, "Open Sans", Times, serif;
+}
+.input-category {
+  font-size: 18px;
+  font-family: Georgia, "Open Sans", Times, serif;
+}
+.input-description {
+  font-size: 18px;
+  font-family: Georgia, "Open Sans", Times, serif;
+}
+
+.submit-btn {
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 40px;
+  margin-top: 40px;
+  background-color: #047aed;
+  color: white;
+  border: none;
+  box-shadow: 2px 2px 10px 2px #cecece;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .create-form {
+    padding-top: 150px;
+  }
+
+  input,
+  textarea {
+    font-size: 28px;
+  }
+}

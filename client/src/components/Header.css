@@ -1,28 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Piedra&display=swap");
 
 .header-container {
-  /* flex: 1; */
-  /* position: fixed; */
-  width: 100%;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #047aed;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: #047aed;
+  width: 100%;
   height: 100px;
 }
+.left-side {
+  display: flex;
+  width: auto;
+  align-items: center;
+  padding-left: 10px;
+}
+h2 {
+  text-decoration: none;
+}
+
+.right-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: max-content;
+  margin: 15px;
+  padding-right: 10px;
+}
+
 .logo {
-  font-family: "Open Sans, sans-serif";
+  font-family: "Open Sans";
   text-align: center;
-  font-weight: bold;
-  font-size: 34px;
-  letter-spacing: -3px;
+  font-size: 22px;
+  letter-spacing: 1px;
   flex: 1;
   max-width: 30vw;
   transition: 250ms all;
+  text-decoration: none;
 }
 .logo:hover {
   transform: scale(1.004);
@@ -37,24 +52,21 @@
 .header-a :hover {
   font-weight: 400;
 }
-
-.left-side {
-  display: flex;
-  width: max-content;
-  align-items: center;
-}
-
-.right-side {
-  display: flex;
-  /* width: max-content; */
-  /* align-items: flex-end; */
-  /* padding-right: 15px; */
-  justify-content: space-between;
+.header-btn {
   margin: 5px;
+  width: 75px;
+  height: 20px;
+  border-radius: 25px;
+  font-family: "Open Sans";
+  font-size: 12px;
 }
+.header-logo {
+  text-decoration: none;
+}
+
 .user-username {
   display: inline-flex;
-  margin: 15px;
+  margin: 8px;
 }
 .profile-btn {
   display: flex;
@@ -64,55 +76,27 @@
 }
 .s-link {
   margin: 5px;
+  width: 75px;
+  height: 20px;
 }
 .blog-logo {
   flex-direction: column;
   justify-content: start;
 }
 
-.navbar-link {
-  display: flex;
-  padding: 45px;
-  margin: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  margin: 10px;
-  text-decoration: none;
-  color: #ffffff;
-  letter-spacing: 0.32px;
+@media (max-width: 350px) {
+  nav {
+    width: 90%;
+  }
+  .left-side {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
-.header-logo {
-  text-decoration: none;
-  padding-left: 15px;
-}
-.user-username {
-  padding-right: 15px;
-}
-.logout-btn {
-  padding-left: 15px;
-}
-
-/* .links {
-  flex: 2;
-  max-width: 30vw;
-  align-items: center;
-  font-size: 24px;
-  display: flex;
-}
-
-.link {
-  flex: 1;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-} */
 
 @media (max-width: 710px) {
   nav {
-    width: 50%;
-    background-color: red;
+    width: 98%;
   }
   .logo {
     max-width: 50%;
