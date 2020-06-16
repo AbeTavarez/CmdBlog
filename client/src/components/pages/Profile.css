@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Piedra&display=swap");
+
+.profile-area {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 15px;
+  text-align: center;
+}
+.top-profile {
+  /* display: flex;
+  flex-direction: column;
+  align-content: center; */
+  text-align: center;
+}
+
+.create-new {
+  color: #047aed;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+.profile {
+  font-family: "Piedra";
+  color: #047aed;
+  font-size: 65px;
+}
+
+@media (max-width: 350px) {
+  .profile {
+    font-size: 25px;
+  }
+  .create-new {
+    color: #047aed;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .profile {
+    font-size: 45px;
+  }
+  .create-new {
+    color: #047aed;
+    font-size: 150px;
+  }
+}

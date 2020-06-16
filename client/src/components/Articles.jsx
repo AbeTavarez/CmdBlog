@@ -1,23 +1,24 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
+import "./Articles.css";
+
 export default function Articles({ articles }) {
-  //   console.log("articles-->", articles);
   return (
-    <>
-      <h2>Popular Articles</h2>
+    <div className="sort-container">
+      <div className="page-title">Popular Articles</div>
       {articles.map((article) => (
         <div key={article.id}>
           <Link
             to={`/articles/${article.id}`}
-            style={{ textDecoration: "none" }}
+            style={{ textDecoration: "underline" }}
           >
-            {article.title}
+            <div className="article-title">{article.title}</div>
           </Link>
           <br />
-          <h5>{article.topic}</h5>
+          <div className="article-topic-articles">{article.topic}</div>
         </div>
       ))}
-    </>
+    </div>
   );
 }

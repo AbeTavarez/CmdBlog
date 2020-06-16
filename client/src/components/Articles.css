@@ -1,0 +1,43 @@
+.sort-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-title {
+  text-decoration: none;
+  font-size: 35px;
+  margin: 45px;
+}
+a {
+  color: black;
+}
+.article-title {
+  font-size: 24px;
+  color: #047aed;
+}
+.article-topic-articles {
+  text-align: center;
+}
+
+@media (max-width: 350) {
+  .article-title {
+    font-size: 14px;
+  }
+  .sort-container {
+    width: 100%;
+    justify-content: center;
+    margin: 0px;
+  }
+}
+
+@media (max-width: 500px) {
+  .article-title {
+    font-size: 22px;
+  }
+  .sort-container {
+    width: 100%;
+    justify-content: center;
+    margin: 0px;
+  }
+}

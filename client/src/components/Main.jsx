@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import {
   getAllArticles,
-  getSingleArticle,
+  getUserArticles,
   createArticle,
   updateArticle,
   deleteArticle,
 } from "../services/articles";
+
 import { getAllCategories } from "../services/categories";
 import { getAllUsers, createUser, deleteUser } from "../services/users";
 
@@ -23,13 +24,9 @@ import EditArticle from "./pages/EditArticle";
 export default class Main extends Component {
   state = {
     articles: [],
+    userArticles: [],
     users: [],
     categories: [],
-    formData: {
-      title: "",
-      topic: "",
-      description: "",
-    },
   };
 
   componentDidMount() {
@@ -39,10 +36,14 @@ export default class Main extends Component {
       this.getUsers();
     }
   }
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevProps.currentUser !== this.props.currentUser) {
       this.getArticles();
       this.getCategories();
+      this.getUserArticles();
+    }
+    if (prevState.articles !== this.state.articles) {
+      this.getUserArticles();
     }
   }
 
@@ -57,6 +58,11 @@ export default class Main extends Component {
   getUsers = async () => {
     const users = await getAllUsers();
     this.setState({ users });
+  };
+
+  getUserArticles = async () => {
+    const userArticles = await getUserArticles();
+    this.setState({ userArticles });
   };
 
   postUser = async (userData) => {
@@ -82,7 +88,6 @@ export default class Main extends Component {
   //* Articles
   getArticles = async () => {
     const articles = await getAllArticles();
-    console.log(articles);
     this.setState({ articles });
   };
   //* Creates Article and set it to state
@@ -95,9 +100,11 @@ export default class Main extends Component {
 
   putArticle = async (id, articleData) => {
     const updatedArticle = await updateArticle(id, articleData);
+    console.log(id, updatedArticle.id);
+
     this.setState((prevState) => ({
       articles: prevState.articles.map((article) =>
-        article.id === id ? updatedArticle : article
+        article.id == id ? updatedArticle : article
       ),
     }));
   };
@@ -105,7 +112,9 @@ export default class Main extends Component {
   destroyArticle = async (id) => {
     await deleteArticle(id);
     this.setState((prevState) => ({
-      articles: prevState.articles.filter((article) => article.id !== id),
+      userArticles: prevState.userArticles.filter(
+        (article) => article.id != id
+      ),
     }));
   };
 
@@ -119,35 +128,8 @@ export default class Main extends Component {
       },
     }));
   };
-  // //* sets formdata
-  // setArticleInState = (currentArticle) => {
-  //   const { title, topic, description } = currentArticle;
-  //   this.setState({
-  //     formData: {
-  //       title,
-  //       topic,
-  //       description,
-  //     },
-  //   });
-  // };
-
-  //* Commments
-  // createComment = async (articleId, userInput) => {
-  //   const newComment = await createComment(articleId, userInput);
-
-  //   this.setState((prevState) => ({
-  //     articles: prevState.articles.map((art) => {
-  //       if (art.id === newComment.article_id) {
-  //         art.comments.push(newComment);
-  //       }
-  //       return art;
-  //     }),
-  //   }));
-  // };
 
   render() {
-    // console.log(this.state)
-    // console.log(this.formData)
     return (
       <div className="container">
         <Switch>
@@ -205,10 +187,10 @@ export default class Main extends Component {
               const currentArticle = this.state.articles.find(
                 (article) => article.id === parseInt(articleId)
               );
-              console.log(currentArticle);
               return (
                 <Article
                   {...props}
+                  currentUser={this.props.currentUser}
                   currentArticle={currentArticle}
                   destroyArticle={this.destroyArticle}
                   putArticle={this.putArticle}
@@ -238,7 +220,7 @@ export default class Main extends Component {
             render={(props) => (
               <Profile
                 {...props}
-                articles={this.state.articles}
+                articles={this.state.userArticles}
                 currentUser={this.props.currentUser}
                 destroyArticle={this.destroyArticle}
                 putArticle={this.putArticle}
@@ -273,28 +255,11 @@ export default class Main extends Component {
                   articleId={articleId}
                   articleData={this.state.formData}
                   putArticle={this.putArticle}
-                  currentArticle={currentArticle}
+                  currentArticleData={currentArticle}
                   handleChange={this.handleChange}
                 />
               );
             }}
-          />
-          {/* <Route
-            exact
-            path="/article/:id"
-            render={(props) => {
-              const articleId = props.match.params.id;
-              return (
-                <Article
-                  articleId={articleId}
-                  currentUser={this.props.currentUser}
-                />
-              );
-            }}
-          /> */}
-          <Redirect
-            path="/"
-            // {this.props.currentUser ? <Redirect to="/profile" /> : <Articles />}
           />
         </Switch>
       </div>

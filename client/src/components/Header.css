@@ -6,74 +6,111 @@
   justify-content: space-between;
   align-items: center;
   background-color: #047aed;
+  width: 100%;
   height: 100px;
-  font-family: "Open Sans, sans-serif";
+}
+.left-side {
+  display: flex;
+  width: auto;
+  align-items: center;
+  padding-left: 10px;
+}
+h2 {
+  text-decoration: none;
+}
+
+.right-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: max-content;
+  margin: 15px;
+  padding-right: 10px;
+}
+
+.logo {
+  font-family: "Open Sans";
+  text-align: center;
+  font-size: 22px;
+  letter-spacing: 1px;
+  flex: 1;
+  max-width: 30vw;
+  transition: 250ms all;
+  text-decoration: none;
+}
+.logo:hover {
+  transform: scale(1.004);
 }
 .header-a {
   text-decoration: none;
 }
 .header-a,
 .header-a :visited {
-  color: red;
+  color: white;
 }
 .header-a :hover {
   font-weight: 400;
 }
-
-.left-side {
-  display: flex;
-  width: max-content;
-  align-items: center;
+.header-btn {
+  margin: 5px;
+  width: 75px;
+  height: 20px;
+  border-radius: 25px;
+  font-family: "Open Sans";
+  font-size: 12px;
+}
+.header-logo {
+  text-decoration: none;
 }
 
-.right-side {
+.user-username {
+  display: inline-flex;
+  margin: 8px;
+}
+.profile-btn {
   display: flex;
-  width: max-content;
-  /* align-items: flex-end; */
-  /* padding-right: 15px; */
-  justify-content: space-between;
-  margin: 35px;
+}
+.logout-btn {
+  padding-top: 15px;
 }
 .s-link {
   margin: 5px;
+  width: 75px;
+  height: 20px;
 }
 .blog-logo {
   flex-direction: column;
   justify-content: start;
 }
 
-.user-username {
-}
-.navbar-link {
-  display: flex;
-  padding: 45px;
-  margin: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  margin: 10px;
-  text-decoration: none;
-  color: #ffffff;
-  letter-spacing: 0.32px;
-}
-.header-logo {
-  text-decoration: none;
-  padding-left: 15px;
+@media (max-width: 350px) {
+  nav {
+    width: 90%;
+  }
+  .left-side {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
-@media (max-width: 900px) {
-  .costco-title {
+@media (max-width: 710px) {
+  nav {
+    width: 98%;
+  }
+  .logo {
+    max-width: 50%;
+  }
+  .logout-btn {
     display: none;
   }
-  .circle-logo {
-    margin: 0 auto;
+  .links {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 50vw;
   }
-}
-@media (max-width: 420px) {
-  .view-more-links > a {
-    font-size: 18px;
-    font-weight: 600;
-  }
-  .apple-header {
-    height: 300px;
+  .link {
+    padding: 3px;
   }
 }

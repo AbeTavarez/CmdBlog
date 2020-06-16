@@ -1,8 +1,12 @@
 import api from "./api-helper";
 
-// export const
-
-export const deleteCommet = async (articleId, commentId) => {
-  // const resp = await api.delete(`/users/${id}`);
-  // return resp.data;
+export const getAllComments = async (id) => {
+  const res = await api.get(`/articles/${id}/comments`);
+  return res.data;
+};
+export const createArticle = async (id, commentData) => {
+  const res = await api.post(`/articles/${id}/comments`, {
+    article: commentData,
+  });
+  return res.data;
 };

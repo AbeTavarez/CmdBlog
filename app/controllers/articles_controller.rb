@@ -63,6 +63,6 @@ class ArticlesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     #Bug origin category chaged to topic
     def article_params
-      params.require(:article).permit(:title, :description, :topic, :category_id)
+      params.require(:article).permit(:title, :description, :topic, :category_id, :image_path)
     end
 end

@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function Categories({ users, articles, categories }) {
   console.log("categories-->", categories);
-  const byCat = categories.filter((cat) => cat.id === articles.category_id);
+  console.log("articles-->", articles);
+  const byCat = articles.filter((ar) => ar.category_id === categories.id);
+  console.log(byCat);
   // console.log(articles.foreach((art) => art.category_id));
 
   return (

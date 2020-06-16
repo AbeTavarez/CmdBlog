@@ -25,7 +25,6 @@ class App extends Component {
   handleLoginSubmit = async (loginData) => {
     const currentUser = await loginUser(loginData);
     this.setState({ currentUser });
-    // this.props.history.push("/profile");
   };
 
   handleRegisterSubmit = async (registerData) => {
@@ -41,7 +40,6 @@ class App extends Component {
     localStorage.clear();
     removeToken();
     this.renderRedirect();
-    // this.props.history.push("/");
   };
 
   renderRedirect = () => {
@@ -54,7 +52,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.currentUser);
     return (
       <div className="App">
         <Header
