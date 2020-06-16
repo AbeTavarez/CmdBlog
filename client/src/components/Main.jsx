@@ -48,11 +48,11 @@ export default class Main extends Component {
   }
 
   //* Gets All Data
-  componentDidMount() {
-    this.getArticles();
-    this.getUsers();
-    this.getCategories();
-  }
+  // componentDidMount() {
+  //   this.getArticles();
+  //   this.getUsers();
+  //   this.getCategories();
+  // }
 
   //* Users
   getUsers = async () => {
