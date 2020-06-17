@@ -1,5 +1,7 @@
 # CommandBlog <!-- omit in toc -->
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6378c1b6-b7ca-429c-8e60-718fe93b5f0d/deploy-status)](https://app.netlify.com/sites/commandblog/deploys)
+
 - [Overview](#overview)
 - [MVP](#mvp)
   - [Goals](#goals)
