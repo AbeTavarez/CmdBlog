@@ -32,7 +32,7 @@ export default class Article extends Component {
     return (
       <>
         {currentArticle && (
-          <div>
+          <div className="single-art-container">
             <div>
               <div className="article-title">{currentArticle.title}</div>
             </div>

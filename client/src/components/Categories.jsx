@@ -1,14 +1,9 @@
 import React from "react";
-
+import "./Categories.css";
 export default function Categories({ users, articles, categories }) {
-  console.log("categories-->", categories);
-  console.log("articles-->", articles);
-  const byCat = articles.filter((ar) => ar.category_id === categories.id);
-  console.log(byCat);
-  // console.log(articles.foreach((art) => art.category_id));
-
   return (
-    <>
+    <div className="categories-container">
+      <div className="cat-head">Categories</div>
       {categories.map((category) => (
         <div key={category.id}>
           <h3 key={category.id}>{category.name}</h3>
@@ -17,6 +12,6 @@ export default function Categories({ users, articles, categories }) {
           </Link> */}
         </div>
       ))}
-    </>
+    </div>
   );
 }

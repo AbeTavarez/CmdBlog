@@ -5,15 +5,17 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #047aed;
+  background-color: #ccafaf;
   width: 100%;
   height: 100px;
+  color: white;
 }
 .left-side {
   display: flex;
   width: auto;
   align-items: center;
   padding-left: 10px;
+  color: white;
 }
 h2 {
   text-decoration: none;
@@ -52,12 +54,15 @@ h2 {
   font-weight: 400;
 }
 .header-btn {
-  margin: 5px;
-  width: 75px;
+  width: 150px;
   height: 20px;
-  border-radius: 25px;
   font-family: "Open Sans";
-  font-size: 12px;
+  font-size: 18px;
+  background-color: #ccafaf;
+  border: none;
+}
+.s-link {
+  padding: 20px;
 }
 .header-logo {
   text-decoration: none;

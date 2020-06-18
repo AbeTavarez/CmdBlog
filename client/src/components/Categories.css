@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap");
+
+.categories-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cat-head {
+  color: black;
+  font-size: 62px;
+  background-color: rosybrown;
+  margin: 50px;
+  padding: 100px 400px;
+}

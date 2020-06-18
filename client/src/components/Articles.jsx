@@ -5,7 +5,7 @@ import "./Articles.css";
 
 export default function Articles({ articles }) {
   return (
-    <div className="sort-container">
+    <div className="articles-container">
       <div className="page-title">Popular Articles</div>
       {articles.map((article) => (
         <div key={article.id}>

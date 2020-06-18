@@ -1,20 +1,23 @@
-.sort-container {
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap");
+
+.articles-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .page-title {
-  text-decoration: none;
-  font-size: 35px;
-  margin: 45px;
+  color: black;
+  font-size: 62px;
+  background-color: rosybrown;
+  margin: 50px;
+  padding: 100px 400px;
 }
 a {
   color: black;
 }
 .article-title {
   font-size: 24px;
-  color: #047aed;
 }
 .article-topic-articles {
   text-align: center;

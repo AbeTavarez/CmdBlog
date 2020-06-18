@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Login.css";
 export default class Login extends Component {
   state = {
@@ -53,7 +53,9 @@ export default class Login extends Component {
           />
         </label>
         <br />
-        <button className="submit-btn">Submit</button>
+        <button type="submit" className="login-submit-btn">
+          Submit
+        </button>
         <hr />
         <h3>Create a new account</h3>
         <Link to="/user/register">Register</Link>

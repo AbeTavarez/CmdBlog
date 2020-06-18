@@ -13,11 +13,11 @@ export default function Header(props) {
         </NavLink>
 
         <div className="navbar-link  header-a ">
-          <NavLink className="s-link" to="/articles">
-            <button className="header-btn">Articles</button>
+          <NavLink className="s-link header-btn" to="/articles">
+            Articles
           </NavLink>
-          <NavLink className="s-link" to="/categories">
-            <button className="header-btn">Categories</button>
+          <NavLink className="s-link header-btn" to="/categories">
+            Categories
           </NavLink>
         </div>
       </div>
@@ -36,7 +36,7 @@ export default function Header(props) {
         {props.currentUser ? (
           <div className="user-username header-a ">
             <button
-              classname="logout-btn"
+              className="logout-btn"
               onClick={props.handleLogout}
               variant="outlined"
               color="secondary"
@@ -46,11 +46,9 @@ export default function Header(props) {
           </div>
         ) : (
           <div>
-            <Link to="/user/login">
-              <button variant="outlined" color="secondary">
-                Login/Register
-              </button>
-            </Link>
+            <NavLink to="/user/login" className="s-link header-btn">
+              Login/Register
+            </NavLink>
           </div>
         )}
       </div>

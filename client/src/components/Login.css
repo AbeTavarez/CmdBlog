@@ -1,8 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap");
 
-* {
-  box-sizing: border-box;
-}
 .form-container {
   display: flex;
   flex-direction: column;
@@ -19,7 +16,15 @@
   text-align: center;
 }
 
-.submit-btn {
+.login-submit-btn {
   width: 150px;
-  height: 20px;
+  height: 40px;
+  background-color: #ccafaf;
+  border: none;
+  font-family: "Open Sans";
+  font-size: 18px;
+  color: white;
+}
+.login-submit-btn:hover {
+  box-shadow: 0 0 10px lightgray;
 }
