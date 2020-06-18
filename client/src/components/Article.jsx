@@ -36,13 +36,11 @@ export default class Article extends Component {
             <div>
               <div className="article-title">{currentArticle.title}</div>
             </div>
-
             <img
               className="image-self"
               src={currentArticle.image_path}
               alt={currentArticle.title}
             />
-
             <div className="art-topic">{currentArticle.topic}</div>
             <div className="article-container">
               <div>{currentArticle.description}</div>
@@ -58,9 +56,9 @@ export default class Article extends Component {
               <div>
                 <div>
                   {articleComments.map((c) => (
-                    <div className="comm" key={c.id}>
+                    <div className="comm" key={c.props.id}>
+                      {c}
                       {<ThumbUpAltIcon />}
-                      {c}by
                     </div>
                   ))}
                 </div>

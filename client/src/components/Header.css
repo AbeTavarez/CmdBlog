@@ -76,7 +76,15 @@ h2 {
   display: flex;
 }
 .logout-btn {
-  padding-top: 15px;
+  /* padding-top: 15px; */
+  width: 150px;
+  height: 20px;
+  font-family: "Open Sans";
+  font-size: 18px;
+  background-color: #ccafaf;
+  border: none;
+}
+.logout-btn:hover {
 }
 .s-link {
   margin: 5px;
